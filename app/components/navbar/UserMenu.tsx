@@ -8,6 +8,7 @@ import MenuItem from "./MenuItem";
 import useRegisterModal from "@/app/hooks/useregisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import { User } from "@prisma/client";
+import useRentModal from "@/app/hooks/useRentModal";
 
 interface UserMenuProps {
     currentUser?: User | null
@@ -18,6 +19,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
 }) =>{
     const resgisterModal = useRegisterModal();
     const loginModal = useLoginModal()
+    const rentModal = useRentModal()
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleopen = useCallback(()=>{
@@ -25,10 +27,13 @@ const UserMenu: React.FC<UserMenuProps> = ({
     }, []);
 
     const onRent = useCallback(()=>{
-        if (!currentUser) {
-            return loginModal.onOpen()
-        }
-    },[currentUser, loginModal])
+        // if (!currentUser) {
+        //     return loginModal.onOpen()
+        // }
+
+        rentModal.onOpen();
+
+    },[ rentModal])
 
     return(
         <div className="relative">
