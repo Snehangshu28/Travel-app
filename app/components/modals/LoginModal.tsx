@@ -17,7 +17,7 @@ import { toast }  from 'react-hot-toast'
 import Button from "../Button";
 
 
-const RegisterModal = () =>{
+const LoginModal = () =>{
     const registerModal = useRegisterModal();
     const [isLoding, setIsLoding] = useState(false);
 
@@ -143,4 +143,4 @@ const RegisterModal = () =>{
     )
 }
 
-export  default RegisterModal;
+export  default LoginModal;
