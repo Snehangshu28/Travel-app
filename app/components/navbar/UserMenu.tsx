@@ -7,21 +7,34 @@ import { useCallback, useState } from "react";
 import MenuItem from "./MenuItem";
 import useRegisterModal from "@/app/hooks/useregisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
+import { User } from "@prisma/client";
 
-const UserMenu = () =>{
+interface UserMenuProps {
+    currentUser?: User | null
+}
+
+const UserMenu: React.FC<UserMenuProps> = ({
+    currentUser
+}) =>{
     const resgisterModal = useRegisterModal();
     const loginModal = useLoginModal()
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleopen = useCallback(()=>{
         setIsOpen((value)=>!value);
-    }, [])
+    }, []);
+
+    const onRent = useCallback(()=>{
+        if (!currentUser) {
+            return loginModal.onOpen()
+        }
+    },[currentUser, loginModal])
 
     return(
         <div className="relative">
             <div className="flex flex-row items-center gap-3">
                 <div
-                    onClick={()=>{}}
+                    onClick={onRent}
                     className="
                         hidden
                         md:block

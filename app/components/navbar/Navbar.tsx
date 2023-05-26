@@ -2,6 +2,7 @@
 
 
 import Container from "../Container";
+import Catagories from "./Categories";
 import Logo from "./Logo";
 import Search from "./Search";
 import UserMenu from "./UserMenu";
@@ -30,6 +31,7 @@ const Navbar = () => {
                 </div>
             </Container>
             </div>
+            <Catagories/>
         </div>
     )
 }
